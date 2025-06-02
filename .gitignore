@@ -1,0 +1,4 @@
+node_modules/
+tokens/         # Venom’s session tokens
+.env            # if you ever use environment variables
+.DS_Store
