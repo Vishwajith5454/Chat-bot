@@ -27,7 +27,8 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Copy package files first (for caching) and install dependencies
-COPY package.json package-lock.json ./
+COPY package.json ./
+
 RUN npm install
 
 # Copy the rest of the application code
