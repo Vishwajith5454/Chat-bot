@@ -1,7 +1,9 @@
-# Use the official Node.js 18 image as a base
+# Dockerfile
+
+# Use Node.js 18 LTS (slim) as base image
 FROM node:18-slim
 
-# Install dependencies needed by Chromium (for Venom.js)
+# Install OS dependencies required by Puppeteer (and therefore Venom.js)
 RUN apt-get update && apt-get install -y \
     wget \
     ca-certificates \
@@ -23,20 +25,20 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
-# Create and set the working directory
+# Create and set the working directory inside the container
 WORKDIR /app
 
-# Copy package files first (for caching) and install dependencies
+# 1) Copy only package.json (no package-lock.json)
+#    This allows npm install to run based on package.json alone.
 COPY package.json ./
 
+# 2) Install dependencies
 RUN npm install
 
-# Copy the rest of the application code
+# 3) Copy the rest of the application code into /app
+#    (index.js, sheet.js, materials.json, credentials.json, etc.)
 COPY . .
 
-# Expose no ports (Venom uses headless Chrome—no HTTP port required)
-# If you ever add an HTTP health-check endpoint, expose it here:
-# EXPOSE 3000
-
-# Start the bot
+# 4) Expose no ports (we’re not running a web server)
+#    Start the bot
 CMD ["npm", "start"]
