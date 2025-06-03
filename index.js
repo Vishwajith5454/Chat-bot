@@ -11,10 +11,16 @@ const pendingBookings = {};
 venom
   .create({
     session: 'booking-bot-session',
-    multidevice: false
+    multidevice: false,
+    // <-- add these lines:
+    puppeteerOptions: {
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    }
   })
-  .then(client => start(client))
-  .catch(err => console.error('Error starting Venom:', err));
+  .then((client) => start(client))
+  .catch((err) => console.error('Error starting Venom:', err));
+
 
 async function start(client) {
   console.log('🟢 Venom bot is up and running');
