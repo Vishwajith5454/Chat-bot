@@ -1,13 +1,13 @@
 {
   "name": "whatsapp-booking-bot",
   "version": "1.0.0",
-  "description": "A free WhatsApp booking bot using Venom.js and Google Sheets",
+  "description": "A free‐forever WhatsApp booking bot using Venom.js and Google Sheets",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "venom-bot": "^5.0.0",
+    "venom-bot": "^6.0.0",
     "googleapis": "^118.0.0"
   }
 }
