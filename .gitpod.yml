@@ -1,17 +1,4 @@
-# .gitpod.yml
-image:
-  # You can omit this block if you don’t need a custom Dockerfile.
-  # In Option 1, we install directly via apt in the init step, so
-  # we do NOT need a .gitpod.Dockerfile. You may remove the 'image:' lines
-  # entirely if you prefer. For clarity, we leave them commented.
-
-# image:
-#   file: .gitpod.Dockerfile
-
 tasks:
-  # The 'init' task runs immediately when Gitpod starts.
-  # We install all system dependencies Puppeteer/Chromium needs,
-  # then we run `npm install` to fetch your Node packages.
   - init: |
       sudo apt-get update
       sudo apt-get install -y \
@@ -34,6 +21,4 @@ tasks:
         xdg-utils
       npm install
 
-  # After `init:` finishes, Gitpod runs this `command:` step,
-  # which starts your bot and prints the ASCII QR code.
   - command: npm start
