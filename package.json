@@ -9,5 +9,11 @@
   "dependencies": {
     "venom-bot": "^5.3.0",
     "googleapis": "^118.0.0"
+  },
+  "overrides": {
+    "puppeteer": "^22.8.2",
+    "rimraf": "^4.0.0",
+    "glob": "^9.0.0",
+    "inflight": "^1.0.7"
   }
 }
