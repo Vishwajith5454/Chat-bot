@@ -20,5 +20,4 @@ tasks:
         wget \
         xdg-utils
       npm install
-
   - command: npm start
